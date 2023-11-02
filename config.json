@@ -1,18 +1,18 @@
 {
   "params": {
     "local_server": "True",
-    "local_uri": "mysql://root:root@localhost/coding_thunder",
+    "local_uri": "mysql://username:password@localhost/coding_thunder",
     "prod_uri": "mysql://username:password@localhost/coding_thunder_prod",
     "fb_url": "https://www.facebook.com/coding_thunder",
     "tw_url": "https://www.twitter.com/coding_thunder",
     "gh_url": "https://www.github.com/coding_thunder",
     "blog_name": "Coding Thunder",
     "tag_line": "A Blog for Developers and Coders",
-    "gmail-user": "codingmaniasolutions@gmail.com",
-    "gmail-password": "sajyribsbevfvhrj",
+    "gmail-user": "your gmail adddress",
+    "gmail-password": "your password",
     "no_of_posts": 2,
-    "admin_user": "admin",
-    "admin_password": "admin",
-    "upload_location": "/home/javauser/PycharmProjects/pythonProject/Flask-Tutorial/static/img/uploads"
+    "admin_user": "username",
+    "admin_password": "password",
+    "upload_location": "your directory"
   }
 }
