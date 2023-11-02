@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  Home - {{ params['blog_name'] }}
+{% endblock %}
+
+{% block body %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static', filename = 'img/home-bg.jpg') }}')">
+    <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="site-heading">
+            <h1>{{ params['blog_name'] }}</h1>
+            <span class="subheading">{{ params['tag_line'] }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Main Content -->
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <!-- Todo - Iterate 4 post per page using for loop -->
+
+        {% for post in posts %}
+          <!-- Post preview -->
+          <div class="post-preview">
+            <a href="/post/{{ post.slug }}">
+              <h2 class="post-title">{{ post.title }}</h2>
+              <h3 class="post-subtitle">{{ post.tagline }}</h3>
+            </a>
+            <p class="post-meta">
+              Posted by
+              <a href="#!">Admin</a>
+              on {{ post.date.strftime('%B %d, %Y') }}
+            </p>
+          </div>
+          <!-- Divider -->
+          <hr class="my-4" />
+        {% endfor %}
+
+        <!-- Pager -->
+        {% if prev == None %}
+          <a class="btn btn-primary text-uppercase float-start disabled mb-4" href="#!"><img src="{{ url_for('static', filename = 'img/arrow-118-24.png') }}" alt="" /> Previous</a>
+        {% else %}
+          <a class="btn btn-primary text-uppercase float-start mb-4" href="{{ prev }}"><img src="{{ url_for('static', filename = 'img/arrow-118-24.png') }}" alt="" /> Previous</a>
+        {% endif %}
+
+        {% if next == None %}
+          <a class="btn btn-primary text-uppercase float-end disabled mb-4" href="#!">Next <img src="{{ url_for('static', filename = 'img/arrow-18-24.png') }}" alt="" /></a>
+        {% else %}
+          <a class="btn btn-primary text-uppercase float-end mb-4" href="{{ next }}">Next <img src="{{ url_for('static', filename = 'img/arrow-18-24.png') }}" alt="" /></a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

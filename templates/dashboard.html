@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  Home - {{ params['blog_name'] }}
+{% endblock %}
+
+{% block body %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static', filename = 'img/home-bg.jpg') }}')">
+    <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="site-heading">
+            <h1>Admin Panel</h1>
+            <span class="subheading">Manage and Modify Blogs Here</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Main Content -->
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <h1 class="float-start mb-4">My Blogs</h1>
+        <a href="/add-edit/0" class="btn btn-primary float-end mb-4">Add New</a>
+        <table class="table">
+          <thead>
+            <tr class="text-center">
+              <th>Sr. No.</th>
+              <th>Title</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for post in posts %}
+              <tr class="text-center">
+                <td>{{ loop.index }}</td>
+                <td>
+                  <a href="/post/{{ post.slug }}">{{ post.title }}</a>
+                </td>
+                <td>{{ post.date.strftime('%B %d, %Y') }}</td>
+                <td>
+                  <div class="d-grid gap-2 d-md-flex justify-content-center">
+                    <a href="/add-edit/{{ post.sno }}" class="btn btn-sm btn-dark">Edit</a>
+                    <a href="/delete/{{ post.sno }}" class="btn btn-sm btn-danger">Delete</a>
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

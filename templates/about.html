@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  About - {{ params['blog_name'] }}
+{% endblock %}
+
+{% block body %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static', filename = 'img/about-bg.jpg') }}')">
+    <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="page-heading">
+            <h1>About Me</h1>
+            <span class="subheading">This is what I do.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Main Content -->
+  <main class="mb-4">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <p>Welcome to Coding Thunder, your ultimate destination for insightful technical blogs and expert insights, brought to you by the visionary web developer, Manish Chaudhari. With a profound understanding of cutting-edge technologies such as Java, Python, React, and more, Manny is your guide through the ever-evolving landscape of the digital realm.</p>
+          <p>At Coding Thunder, we aim to ignite your passion for coding, unravel the mysteries of software development, and empower you with knowledge that goes beyond the ordinary. Our content is a testament to Manny's dedication to the craft, offering a treasure trove of wisdom, tips, and tricks to inspire both beginners and seasoned developers.</p>
+          <p>Join us on this exhilarating journey where the thunderous roar of coding meets the finesse of expertly crafted blogs. Explore the latest in technology, get solutions to your coding conundrums, and embark on a path of continuous learning.</p>
+          <p>Experience the storm of knowledge at Coding Thunder and let it electrify your coding adventures!</p>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  Home - {{ params['blog_name'] }}
+{% endblock %}
+
+{% block body %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static', filename = 'img/home-bg.jpg') }}')">
+    <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="site-heading">
+            <h1>Admin Panel</h1>
+            <span class="subheading">Manage and Modify Blogs Here</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Main Content -->
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        {% if sno == '0' %}
+          <h1 class="text-center">Add New Blog</h1>
+        {% else %}
+          <h1 class="text-center">Edit Blog</h1>
+        {% endif %}
+        <div class="my-5">
+          <form method="post" action="/add-edit/{{ sno }}" enctype="multipart/form-data">
+            <div class="form-floating">
+              <input class="form-control" id="title" value="{{ post.title }}" name="title" type="text" placeholder="Enter blog title here..." required />
+              <label for="title">Title</label>
+            </div>
+            <div class="form-floating">
+              <input class="form-control" id="tagline" value="{{ post.tagline }}" name="tagline" type="text" placeholder="Enter blog Tagline here..." required />
+              <label for="tagline">Tagline</label>
+            </div>
+            <div class="form-floating">
+              <input class="form-control" id="slug" value="{{ post.slug }}" name="slug" type="text" placeholder="Enter blog slug here..." required />
+              <label for="slug">Slug</label>
+            </div>
+            <div class="form-floating">
+              <textarea class="form-control" id="content" name="content" placeholder="Enter blog content here..." style="height: 12rem" required>{{ post.content }}</textarea>
+              <label for="content">Content</label>
+            </div>
+            <div class="form-floating">
+              <input class="form-control form" id="img_file" name="img_file" type="file" accept=".jpg, .png" onchange="changeFileText()" />
+              <label for="img_file">Image File</label>
+              <small class="form-text text-muted" id="status">
+                {% if sno != '0' %}
+                  Current Image : {{ post.img_file }}
+                {% else %}
+                  No file selected
+                {% endif %}
+              </small>
+            </div>
+            <br />
+            <!-- Submit Button -->
+            <div class="d-grid d-md-flex gap-2 justify-content-md-center">
+              <button class="btn btn-primary text-uppercase" id="submitButton" type="submit" onclick="convertNewlines()">Submit</button>
+              <a class="btn btn-danger text-uppercase" href="/dashboard">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    function convertNewlines() {
+      var content = document.getElementById('content').value
+      content = content.replace(/\n\n/g, '\\')
+      document.getElementById('content').value = content
+    }
+    function changeFileText() {
+      let imgFileInput = document.getElementById('img_file')
+      let label = document.getElementById('status')
+      let imgFile = imgFileInput.value
+    
+      if (imgFile == '') {
+        label.innerHTML = 'No file selected'
+      } else {
+        label.innerHTML = 'Selected Image : ' + imgFile.split('\\').pop()
+      }
+    }
+  </script>
+{% endblock %}

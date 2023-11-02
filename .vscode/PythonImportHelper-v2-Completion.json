@@ -1,0 +1,279 @@
+[
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Mail",
+        "importPath": "flask_mail",
+        "description": "flask_mail",
+        "isExtraImport": true,
+        "detail": "flask_mail",
+        "documentation": {}
+    },
+    {
+        "label": "SQLAlchemy",
+        "importPath": "flask_sqlalchemy",
+        "description": "flask_sqlalchemy",
+        "isExtraImport": true,
+        "detail": "flask_sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "F",
+        "importPath": "regex",
+        "description": "regex",
+        "isExtraImport": true,
+        "detail": "regex",
+        "documentation": {}
+    },
+    {
+        "label": "secure_filename",
+        "importPath": "werkzeug.utils",
+        "description": "werkzeug.utils",
+        "isExtraImport": true,
+        "detail": "werkzeug.utils",
+        "documentation": {}
+    },
+    {
+        "label": "Contacts",
+        "kind": 6,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "class Contacts(db.Model):\n    sno = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(150), nullable=False)\n    email = db.Column(db.String(50), nullable=False)\n    phone_num = db.Column(db.String(12), nullable=False)\n    message = db.Column(db.String(255), nullable=False)\n    date = db.Column(db.String(12), nullable=True)\nclass Posts(db.Model):\n    sno = db.Column(db.Integer, primary_key=True)\n    title = db.Column(db.String(255), nullable=False)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "Posts",
+        "kind": 6,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "class Posts(db.Model):\n    sno = db.Column(db.Integer, primary_key=True)\n    title = db.Column(db.String(255), nullable=False)\n    tagline = db.Column(db.String(255), nullable=False)\n    slug = db.Column(db.String(50), nullable=False)\n    content = db.Column(db.String(3000), nullable=False)\n    date = db.Column(db.String(12), nullable=True)\n    img_file = db.Column(db.String(50), nullable=True)\n@app.route(\"/\")\ndef home():",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def home():\n    # posts = Posts.query.filter_by().all()\n    # last = math.floor(int(len(posts) / int(params[\"no_of_posts\"]))) + 1\n    # print(last)\n    page = request.args.get(\"page\")\n    if not str(page).isnumeric():\n        page = 0\n    page = int(page)\n    # posts = posts[\n    #     (page - 1)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "about",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def about():\n    return render_template(\"about.html\", params=params)\n@app.route(\"/contact\", methods=[\"GET\", \"POST\"])\ndef contact():\n    if request.method == \"POST\":\n        # Add entry to the database\n        name = request.form.get(\"name\")\n        email = request.form.get(\"email\")\n        phone = request.form.get(\"phone\")\n        message = request.form.get(\"message\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "contact",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def contact():\n    if request.method == \"POST\":\n        # Add entry to the database\n        name = request.form.get(\"name\")\n        email = request.form.get(\"email\")\n        phone = request.form.get(\"phone\")\n        message = request.form.get(\"message\")\n        entry = Contacts(\n            name=name,\n            email=email,",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "get_post",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def get_post(post_slug):\n    post = Posts.query.filter_by(slug=post_slug).first()\n    paragraphs = post.content.split(\"\\\\\")\n    for paragraph in paragraphs:\n        paragraph = paragraph.replace(\"\\\\\", \"\")\n    return render_template(\"post.html\", params=params, post=post, paragraphs=paragraphs)\n@app.route(\"/sign-in\", methods=[\"GET\", \"POST\"])\ndef sign_in():\n    if request.method != \"POST\":\n        return render_template(\"signin.html\", params=params)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "sign_in",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def sign_in():\n    if request.method != \"POST\":\n        return render_template(\"signin.html\", params=params)\n    username = request.form.get(\"uname\")\n    userpass = request.form.get(\"pass\")\n    if username == params[\"admin_user\"] and userpass == params[\"admin_password\"]:\n        session[\"user\"] = username\n        return redirect(\"/dashboard\")\n@app.route(\"/sign-out\")\ndef logout():",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "logout",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def logout():\n    session.pop(\"user\", None)\n    return redirect(\"/sign-in\")\n@app.route(\"/dashboard\", methods=[\"GET\"])\ndef dashboard():\n    if \"user\" not in session or session[\"user\"] != params[\"admin_user\"]:\n        return redirect(\"/sign-in\")\n    posts = Posts.query.all()\n    return render_template(\"dashboard.html\", params=params, posts=posts)\n@app.route(\"/add-edit/<string:sno>\", methods=[\"GET\", \"POST\"])",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "dashboard",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def dashboard():\n    if \"user\" not in session or session[\"user\"] != params[\"admin_user\"]:\n        return redirect(\"/sign-in\")\n    posts = Posts.query.all()\n    return render_template(\"dashboard.html\", params=params, posts=posts)\n@app.route(\"/add-edit/<string:sno>\", methods=[\"GET\", \"POST\"])\ndef add_edit(sno):\n    if \"user\" not in session or session[\"user\"] != params[\"admin_user\"]:\n        return redirect(\"/sign-in\")\n    post = Posts.query.filter_by(sno=sno).first()",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "add_edit",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def add_edit(sno):\n    if \"user\" not in session or session[\"user\"] != params[\"admin_user\"]:\n        return redirect(\"/sign-in\")\n    post = Posts.query.filter_by(sno=sno).first()\n    if request.method != \"POST\":\n        return render_template(\"add-edit.html\", params=params, post=post, sno=sno)\n    title = request.form.get(\"title\")\n    tagline = request.form.get(\"tagline\")\n    slug = request.form.get(\"slug\")\n    content = request.form.get(\"content\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "delete",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def delete(sno):\n    if \"user\" not in session or session[\"user\"] != params[\"admin_user\"]:\n        return redirect(\"/sign-in\")\n    post = Posts.query.filter_by(sno=sno).first()\n    db.session.delete(post)\n    db.session.commit()\n    return redirect(\"/dashboard\")\ndef allowed_file(filename):\n    return \".\" in filename and filename.rsplit(\".\", 1)[1].lower() in {\n        \"png\",",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "allowed_file",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def allowed_file(filename):\n    return \".\" in filename and filename.rsplit(\".\", 1)[1].lower() in {\n        \"png\",\n        \"jpg\",\n        \"jpeg\",\n    }\napp.run(debug=True)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "local_server",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "local_server = params[\"local_server\"]\napp = Flask(__name__)\napp.config[\"UPLOAD_FOLDER\"] = params[\"upload_location\"]\napp.secret_key = \"super-secret-key\"\napp.config.update(\n    MAIL_SERVER=\"smtp.gmail.com\",\n    MAIL_PORT=\"465\",\n    MAIL_USE_SSL=True,\n    MAIL_USERNAME=params[\"gmail-user\"],\n    MAIL_PASSWORD=params[\"gmail-password\"],",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "app = Flask(__name__)\napp.config[\"UPLOAD_FOLDER\"] = params[\"upload_location\"]\napp.secret_key = \"super-secret-key\"\napp.config.update(\n    MAIL_SERVER=\"smtp.gmail.com\",\n    MAIL_PORT=\"465\",\n    MAIL_USE_SSL=True,\n    MAIL_USERNAME=params[\"gmail-user\"],\n    MAIL_PASSWORD=params[\"gmail-password\"],\n)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "app.config[\"UPLOAD_FOLDER\"]",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "app.config[\"UPLOAD_FOLDER\"] = params[\"upload_location\"]\napp.secret_key = \"super-secret-key\"\napp.config.update(\n    MAIL_SERVER=\"smtp.gmail.com\",\n    MAIL_PORT=\"465\",\n    MAIL_USE_SSL=True,\n    MAIL_USERNAME=params[\"gmail-user\"],\n    MAIL_PASSWORD=params[\"gmail-password\"],\n)\nmail = Mail(app)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "app.secret_key",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "app.secret_key = \"super-secret-key\"\napp.config.update(\n    MAIL_SERVER=\"smtp.gmail.com\",\n    MAIL_PORT=\"465\",\n    MAIL_USE_SSL=True,\n    MAIL_USERNAME=params[\"gmail-user\"],\n    MAIL_PASSWORD=params[\"gmail-password\"],\n)\nmail = Mail(app)\nif local_server:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "mail",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "mail = Mail(app)\nif local_server:\n    app.config[\"SQLALCHEMY_DATABASE_URI\"] = params[\"local_uri\"]\nelse:\n    app.config[\"SQLALCHEMY_DATABASE_URI\"] = params[\"prod_uri\"]\ndb = SQLAlchemy(app)\nclass Contacts(db.Model):\n    sno = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(150), nullable=False)\n    email = db.Column(db.String(50), nullable=False)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "db = SQLAlchemy(app)\nclass Contacts(db.Model):\n    sno = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(150), nullable=False)\n    email = db.Column(db.String(50), nullable=False)\n    phone_num = db.Column(db.String(12), nullable=False)\n    message = db.Column(db.String(255), nullable=False)\n    date = db.Column(db.String(12), nullable=True)\nclass Posts(db.Model):\n    sno = db.Column(db.Integer, primary_key=True)",
+        "detail": "main",
+        "documentation": {}
+    }
+]
